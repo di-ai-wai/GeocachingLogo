@@ -8,17 +8,17 @@
 
 
 #include "Arduino.h"
-#include "LiquidCrystal.h"
+#include "LiquidCrystal_I2C.h"
 
 
 class GeocachingLogo {
-  
+
   public:
-    
-    LiquidCrystal *lcd;
+
+    LiquidCrystal_I2C *lcd;
     uint8_t logotype;
-    
-    GeocachingLogo(LiquidCrystal *alcd, uint8_t ltype = 0);
+
+    GeocachingLogo(LiquidCrystal_I2C *alcd, uint8_t ltype = 0);
     void draw(uint8_t x, uint8_t y);
     void prepareFont();
   private:

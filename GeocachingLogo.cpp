@@ -8,13 +8,13 @@
 #include "GeocachingLogo.h"
 
 
-GeocachingLogo::GeocachingLogo(LiquidCrystal *alcd, uint8_t ltype) : lcd(alcd), logotype(ltype) {
+GeocachingLogo::GeocachingLogo(LiquidCrystal_I2C *alcd, uint8_t ltype) : lcd(alcd), logotype(ltype) {
 
 }
 
 void GeocachingLogo::draw(uint8_t x, uint8_t y) {
   this->prepareFont();
-  
+
   this->lcd->setCursor(x, y);
   this->lcd->write((uint8_t)1);
   this->lcd->write((uint8_t)2);
@@ -25,12 +25,13 @@ void GeocachingLogo::draw(uint8_t x, uint8_t y) {
   this->lcd->write((uint8_t)5);
   this->lcd->write((uint8_t)6);
   this->lcd->write((uint8_t)7);
-  this->lcd->write(" "); 
+  //this->lcd->write(" ");
 
 }
 
 
 void GeocachingLogo::prepareFont() {
+
   if (this->logotype == 0) { //generic logo
     uint8_t L0[8] = {
       0b00000,
@@ -102,7 +103,7 @@ void GeocachingLogo::prepareFont() {
     L0[5] =	0b00100;
     L0[6] =	0b00010;
     L0[7] =	0b00010;
-    this->lcd->createChar(3, L0);
+    this->lcd->createChar(5, L0);
   } else { //groundspeak logo
     uint8_t L0[8] = {
       0b00011,
